@@ -10,6 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 const lighthouseApiKey = process.env.LIGHTHOUSE_API_KEY || "";
 
 app.post("/api/send", async (req: Request, res: Response): Promise<void> => {
+  console.log(req.body);
   const { content: blogContent, wallet_address } = req.body;
 
   if (!blogContent) {

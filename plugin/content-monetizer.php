@@ -54,6 +54,7 @@ class ContentMonetizerPlugin
     public function register_settings()
     {
         register_setting('content_monetizer_settings', 'cm_wallet_address');
+        register_setting('content_monetizer_settings', 'cm_amount');
     }
 
     // Admin settings page
@@ -73,6 +74,14 @@ class ContentMonetizerPlugin
                         <td>
                             <input type="text" name="cm_wallet_address" value="<?php echo esc_attr(get_option('cm_wallet_address')); ?>" class="regular-text" required />
                             <p class="description">Enter your wallet address for monetization</p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Amount</th>
+                        <td>
+                            <input type="number" min="0.01" step="0.01" name="cm_amount" value="<?php echo esc_attr(get_option('cm_amount','0.01')); ?>" class="regular-text" required />
+                            <p class="description">Enter the amount for monetization (minimum: 0.01)</p>
                         </td>
                     </tr>
                 </table>
@@ -115,9 +124,17 @@ class ContentMonetizerPlugin
     {
         if (current_user_can('administrator') && !is_admin()) {
             $wallet_address = get_option('cm_wallet_address');
+            $amount = get_option('cm_wallet_address');
             if (empty($wallet_address)) {
                 echo '<div id="cm-setup-notice" style="position: fixed; top: 32px; right: 20px; background: #fff; border: 1px solid #ccc; padding: 10px; z-index: 9999; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
                     <p><strong>Content Monetizerr:</strong> Please <a href="' . admin_url('options-general.php?page=content-monetizer') . '">set up your wallet address</a> first.</p>
+                </div>';
+                return;
+            }
+
+            if (empty($amount)) {
+                echo '<div id="cm-setup-notice" style="position: fixed; top: 32px; right: 20px; background: #fff; border: 1px solid #ccc; padding: 10px; z-index: 9999; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                    <p><strong>Content Monetizerr:</strong> Please <a href="' . admin_url('options-general.php?page=content-monetizer') . '">set up your monetization fee</a> first.</p>
                 </div>';
                 return;
             }
@@ -141,6 +158,7 @@ class ContentMonetizerPlugin
 
         $current_url = esc_url_raw($_POST['current_url']);
         $wallet_address = get_option('cm_wallet_address');
+        $amount = get_option('cm_amount');
         $api_endpoint = $this->api_endpoint;
 
         // Get the post content
@@ -160,6 +178,7 @@ class ContentMonetizerPlugin
             'url' => $current_url,
             'title' => $title,
             'content' => wp_strip_all_tags($content),
+            'amount' => floatval($amount),
             'wallet_address' => $wallet_address,
             'timestamp' => current_time('mysql'),
             'site_name' => get_bloginfo('name')
