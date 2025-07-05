@@ -45,7 +45,7 @@ The AI agent acts as a content gatekeeper, storing the blog data using tableLand
    Inside your blog editor or post view, click the **"Monetize"** button to send the post data to our **AI agent**
 
 4. **On Access Request**  
-   When a user queries with our AI agent tries: 
+   When a user queries with our AI agent: 
    - Agent searches via indexed decentralised **tableLand** and approves **USDFC** interacts with **Smart Contract** which directly pays to Creator. 
    - Once payment is confirmed, the AI agent delivers the data with **Proof of Logs**
 
