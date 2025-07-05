@@ -33,7 +33,7 @@ The AI agent acts as a content gatekeeper, storing the blog data and responding 
 ## ⚙️ How It Works
 
 1. **Install the Plugin**  
-   Upload and activate FILWPAgent on your WordPress site.
+   Find the ZIP file of plugin at /plugin. Upload and activate FILWPAgent on your WordPress site.
 
 2. **Set Up Monetization**  
    Go to the FILWPAgent settings panel:
@@ -48,7 +48,3 @@ The AI agent acts as a content gatekeeper, storing the blog data and responding 
    When a user or AI agent tries to access your content:
    - They are redirected to pay via **Protocol 402**
    - Once payment is confirmed, the AI agent delivers the data
-
-
-
-
