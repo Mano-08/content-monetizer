@@ -26,7 +26,7 @@ With FILWPAgent, creators can:
 
 
 
-The AI agent acts as a content gatekeeper, storing the blog data and responding only to paid requests.
+The AI agent acts as a content gatekeeper, storing the blog data using tableLand (onchain SQL) with ai powered search engine.
 
 ---
 
@@ -39,12 +39,12 @@ The AI agent acts as a content gatekeeper, storing the blog data and responding 
    Go to the FILWPAgent settings panel:
    - Enter your **Wallet address**
    - Set your **Price per access**
-   - All settings are stored securely in a **SQLite database**
+   - All settings are stored securely in a **TableLand*
 
 3. **Monetize Posts**  
-   Inside your blog editor or post view, click the **"Monetize"** button to send the post data (title, body, etc.) to a **linked AI agent backend**
+   Inside your blog editor or post view, click the **"Monetize"** button to send the post data to our **AI agent**
 
 4. **On Access Request**  
-   When a user or AI agent tries to access your content:
-   - They are redirected to pay via **Protocol 402**
-   - Once payment is confirmed, the AI agent delivers the data
+   When a user queries with our AI agent tries: 
+   - Agent searches via indexed decentralised **tableLand** and approves **USDFC** interacts with **Smart Contract** which directly pays to Creator. 
+   - Once payment is confirmed, the AI agent delivers the data with **Proof of Logs**
