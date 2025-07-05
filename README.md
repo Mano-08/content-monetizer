@@ -48,3 +48,10 @@ The AI agent acts as a content gatekeeper, storing the blog data using tableLand
    When a user queries with our AI agent tries: 
    - Agent searches via indexed decentralised **tableLand** and approves **USDFC** interacts with **Smart Contract** which directly pays to Creator. 
    - Once payment is confirmed, the AI agent delivers the data with **Proof of Logs**
+
+
+AIAgent- [Repo](https://github.com/Nith567/FILWPAgent)
+
+
+## Project Slides
+📊 [View Project Presentation](https://www.canva.com/design/DAGsR6-Rx5k/mlyC31fhzirv8Cc1rZn_4A/edit)
