@@ -99,7 +99,7 @@ class ContentMonetizerPlugin
                         <th scope="row">Amount</th>
                         <td>
                             <input type="number" min="0.01" step="0.01" name="cm_amount" value="<?php echo esc_attr(get_option('cm_amount','0.01')); ?>" class="regular-text" required />
-                            <p class="description">Enter the amount for monetization (minimum: 0.01)</p>
+                            <p class="description">Enter the amount (in USDFC)</p>
                         </td>
                     </tr>
                 </table>
