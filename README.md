@@ -22,8 +22,8 @@ With FILWPAgent, creators can:
 -  Set a price in USDFC for accessing their content  
 -  Monetize any blog post or page with a single click  
 -  Only paying users or agents can access the content
+![image](https://github.com/user-attachments/assets/c2ca6d5b-b788-496a-b704-4f0102734181)
 
-![image](https://github.com/user-attachments/assets/93efbe00-a364-472c-82b6-d869f4611442)
 
 
 The AI agent acts as a content gatekeeper, storing the blog data and responding only to paid requests.
