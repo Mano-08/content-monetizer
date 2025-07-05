@@ -23,7 +23,7 @@ With FILWPAgent, creators can:
 -  Monetize any blog post or page with a single click  
 -  Only paying users or agents can access the content
 
-![image](https://github.com/user-attachments/assets/0200b603-5a28-4644-9c59-f45c0f5d2fd8)
+![image](https://github.com/user-attachments/assets/93efbe00-a364-472c-82b6-d869f4611442)
 
 
 The AI agent acts as a content gatekeeper, storing the blog data and responding only to paid requests.
