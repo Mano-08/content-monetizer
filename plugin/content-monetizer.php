@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Plugin Name: Content Monetizerr
+ * Plugin Name: FILWPAgent
  * Plugin URI: https://yourwebsite.com
  * Description: Allows admins to monetize content by sending it to a REST API endpoint
  * Version: 1.0.0
@@ -12,6 +12,11 @@
 // Prevent direct access
 if (!defined('ABSPATH')) {
     exit;
+}
+
+function cm_sanitize_amount($value) {
+    $value = floatval($value);
+    return ($value >= 0.01) ? $value : 0.01;
 }
 
 class ContentMonetizerPlugin
@@ -39,8 +44,8 @@ class ContentMonetizerPlugin
     public function add_admin_menu()
     {
         add_options_page(
-            'Content Monetizerr Settings',
-            'Content Monetizerr',
+            'FILWPAgent Settings',
+            'FILWPAgent',
             'manage_options',
             'content-monetizer',
             array($this, 'admin_page')
@@ -50,11 +55,24 @@ class ContentMonetizerPlugin
     // Hardcoded API endpoint
     private $api_endpoint = 'http://localhost:3000/api/send';
 
+    
+
     // Register plugin settings
     public function register_settings()
     {
-        register_setting('content_monetizer_settings', 'cm_wallet_address');
-        register_setting('content_monetizer_settings', 'cm_amount');
+        // register_setting('content_monetizer_settings', 'cm_wallet_address');
+        // register_setting('content_monetizer_settings', 'cm_amount');
+        register_setting('content_monetizer_settings', 'cm_wallet_address', array(
+            'type' => 'string',
+            'sanitize_callback' => 'sanitize_text_field',
+            'default' => '',
+        ));
+        
+        register_setting('content_monetizer_settings', 'cm_amount', array(
+            'type' => 'number',
+            'sanitize_callback' => 'cm_sanitize_amount',
+            'default' => '0.01',
+        ));
     }
 
     // Admin settings page
@@ -62,7 +80,7 @@ class ContentMonetizerPlugin
     {
 ?>
         <div class="wrap">
-            <h1>Content Monetizerr Settings</h1>
+            <h1>FILWPAgent Settings</h1>
             <form method="post" action="options.php">
                 <?php
                 settings_fields('content_monetizer_settings');
@@ -127,14 +145,14 @@ class ContentMonetizerPlugin
             $amount = get_option('cm_wallet_address');
             if (empty($wallet_address)) {
                 echo '<div id="cm-setup-notice" style="position: fixed; top: 32px; right: 20px; background: #fff; border: 1px solid #ccc; padding: 10px; z-index: 9999; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
-                    <p><strong>Content Monetizerr:</strong> Please <a href="' . admin_url('options-general.php?page=content-monetizer') . '">set up your wallet address</a> first.</p>
+                    <p><strong>FILWPAgent:</strong> Please <a href="' . esc_url(admin_url('options-general.php?page=content-monetizer')) . '">set up your wallet address</a> first.</p>
                 </div>';
                 return;
             }
 
             if (empty($amount)) {
                 echo '<div id="cm-setup-notice" style="position: fixed; top: 32px; right: 20px; background: #fff; border: 1px solid #ccc; padding: 10px; z-index: 9999; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
-                    <p><strong>Content Monetizerr:</strong> Please <a href="' . admin_url('options-general.php?page=content-monetizer') . '">set up your monetization fee</a> first.</p>
+                    <p><strong>FILWPAgent:</strong> Please <a href="' . esc_url(admin_url('options-general.php?page=content-monetizer')) . '">set up your monetization fee</a> first.</p>
                 </div>';
                 return;
             }
